@@ -1,0 +1,48 @@
+.card {
+  min-width: 80%;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 100%;
+}
+
+.main-container {
+  margin: 30px;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.custom-header-title {
+  margin-left: 2%;
+}
+
+mat-header-cell:last-child, mat-header-cell:nth-last-child(2) {
+  max-width: 50px;
+}
+
+mat-cell:last-child, mat-cell:nth-last-child(2) {
+  max-width: 50px;
+}
+
+.deleting {
+  cursor: wait;
+}
+
+a.mat-button {
+  text-decoration: none;
+  color: rgb(0, 114, 122);
+}
+
+a.mat-button:visited {
+  color: rgb(0, 114, 122);
+}

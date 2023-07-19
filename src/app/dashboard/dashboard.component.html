@@ -1,0 +1,65 @@
+<div class="main-container">
+    <br>
+      <div class="container">
+          <div class="container">
+            <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+                <div class="blocks">
+                    <button button="submit" mat-raised-button color="primary" [routerLink]="['/addPost']">
+                        <mat-icon>add</mat-icon> Добавить статью
+                    </button>
+                </div>
+          </div>
+      </div>
+      <br>
+      <div class="container">
+        <div fxLayout="row" fxLayoutAlign="center center" class="content">
+          <mat-card class="card" >
+            <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+              <h3 class="custom-header-title">Текущие посты</h3>
+            </mat-card-title>
+            <mat-card-content>
+                <div class="example-container mat-elevation-z8">
+                    <mat-table #table [dataSource]="dataSource">
+                            
+                        <ng-container matColumnDef="date_posted">
+                        <mat-header-cell *matHeaderCellDef> Дата статьи </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.date | date:'d MMMM y, HH:mm' }} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="title">
+                            <mat-header-cell *matHeaderCellDef> Название </mat-header-cell>
+                            <mat-cell *matCellDef="let element">  
+                                <a class="mat-button" [routerLink]="['/article']" [queryParams]="{id: element.id}" >{{element.title}}</a>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="category">
+                            <mat-header-cell *matHeaderCellDef> Категория </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                          <a (click)="deletePost(element.id)" type="button" [ngClass]="{ 'deleting': isDeleting }">
+                            <mat-icon class="icon">delete</mat-icon>
+                          </a>
+                        </mat-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                          <a (click)="editPost(element.id)" type="button">
+                            <mat-icon class="icon">edit</mat-icon>
+                          </a>
+                        </mat-cell>
+                      </ng-container>
+
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                  </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
