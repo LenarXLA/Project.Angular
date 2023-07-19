@@ -13,6 +13,7 @@ yarn-error.log
 
 # IDEs and editors
 .idea/
+.vscode/
 .project
 .classpath
 .c9/
@@ -39,4 +40,5 @@ testem.log
 
 # System files
 .DS_Store
+.editorconfig
 Thumbs.db
