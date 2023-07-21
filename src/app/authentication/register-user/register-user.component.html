@@ -1,0 +1,82 @@
+<div class="form-wrapper">
+
+    <h1 mat-dialog-title>Регистрация</h1>
+
+  <div mat-dialog-content>
+
+    <form class="example-form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="First Name:"
+          type="text"
+          required
+          [(ngModel)]="registerForm.firstName"
+          name="name"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Last Name:"
+          type="text"
+          required
+          [(ngModel)]="registerForm.lastName"
+          name="lastName"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Email:"
+          type="text"
+          required
+          [(ngModel)]="registerForm.email"
+          name="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Password:"
+          type="text"
+          required
+          [(ngModel)]="registerForm.password"
+          name="password"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Confirm password:"
+          type="text"
+          required
+          [(ngModel)]="registerForm.confirm"
+          name="confirm"
+        />
+      </mat-form-field>
+
+      <div *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div mat-dialog-actions class="adding-form-btns">
+        <button mat-raised-button type="submit" color="primary">Зарегистрироваться</button>
+        <button
+          mat-raised-button
+          class="close"
+          (click)="onNoClick()"
+          color="warn"
+        >
+          Отмена
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>

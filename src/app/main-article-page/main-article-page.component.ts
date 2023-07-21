@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../data/data.service';
+import { DataService } from '../service/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../Post';
 import { Observable } from 'rxjs';

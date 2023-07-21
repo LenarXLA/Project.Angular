@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {DataService} from '../data/data.service';
+import {DataService} from '../service/data.service';
 import {Post} from '../Post';
 import {DataSource} from '@angular/cdk/table';
 import {BehaviorSubject, Observable} from 'rxjs';

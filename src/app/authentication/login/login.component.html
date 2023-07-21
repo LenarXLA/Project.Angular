@@ -1,0 +1,57 @@
+<div class="form-wrapper">
+
+    <h1 mat-dialog-title>Вход</h1>
+
+  <div mat-dialog-content>
+
+    <form class="example-form" (ngSubmit)="onSubmit()">
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Логин:"
+          type="text"
+          required
+          [(ngModel)]="loginForm.username"
+          name="username"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Пароль:"
+          type="text"
+          required
+          [(ngModel)]="loginForm.password"
+          name="password"
+        />
+      </mat-form-field>
+
+
+      <div *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <div mat-dialog-actions class="adding-form-btns">
+        <button mat-raised-button type="submit" color="primary">Вход</button>
+        <button
+          mat-raised-button
+          class="close"
+          (click)="onNoClick()"
+          color="warn"
+        >
+          Отмена
+        </button>
+      </div>
+    </form>
+
+
+    <h3>Нет аккаунта?</h3>
+    <a routerLink="/authentication/register">
+        <button mat-raised-button >Зарегистрироваться</button>
+    </a>
+
+  </div>
+</div>
+
