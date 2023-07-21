@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -15,18 +15,6 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterUserComponent } from './authentication/register-user/register-user.component';
 import { LoginComponent } from './authentication/login/login.component';
-import { Router } from '@angular/router';
-
-const initApp = () => {
-  return () => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      
-    } else {
-      new Router().navigateByUrl('/authentication/login');
-    }
-  };
-};
 
 @NgModule({
   declarations: [
@@ -49,11 +37,6 @@ const initApp = () => {
   ],
   providers: [
     DataService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initApp,
-      multi: true
-    }
   ],
   bootstrap: [AppComponent],
 })
