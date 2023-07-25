@@ -11,7 +11,8 @@ import { AuthenticationService } from 'src/app/service/authentication.service';
 })
 
 export class RegisterUserComponent {
-  errorMessage = '';
+  public errorMessage: string = '';
+  public showError: boolean = false;
 
   constructor(private authService: AuthenticationService, private router: Router) { }
   
@@ -24,7 +25,6 @@ export class RegisterUserComponent {
   };
   
   onSubmit(): void {
-
     if (!this.registerForm.firstName || !this.registerForm.lastName || !this.registerForm.email 
                                      || !this.registerForm.password || !this.registerForm.confirm) {
       this.errorMessage = 'Пожалуйста заполните все необходимые поля.';
@@ -42,7 +42,10 @@ export class RegisterUserComponent {
     this.authService.registerUser("api/Accounts/RegisterUser/Registration", user)
     .subscribe({
       next: (_) => this.router.navigate(["/authentication/login"]),
-      error: (err: HttpErrorResponse) => console.log(err.error.errors)
+      error: (err: HttpErrorResponse) => {
+        this.errorMessage = err.message;
+        this.showError = true;
+      }
     })
 
   }

@@ -1,0 +1,9 @@
+<section style="margin-left: 15px;">
+    <h2>Информация по аккаунту</h2>
+
+    <ul>
+        <li *ngFor="let claim of claims">
+            {{claim.type}} : {{claim.value}}
+        </li>
+    </ul>
+</section>

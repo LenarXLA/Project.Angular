@@ -1,7 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthResponseDto } from 'src/app/_interfaces/response/authResponseDto';
 import { UserForAuthenticationDto } from 'src/app/_interfaces/user/userForAuthenticationDto';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 
@@ -41,15 +40,12 @@ export class LoginComponent {
     
     this.authService.loginUser("api/Accounts/Login/Login", userForAuth)
     .subscribe({
-      next: (res:AuthResponseDto) => {
-        localStorage.setItem("token", res.token);
-        this.authService.sendAuthStateChangeNotification(res.isAuthSuccessful);
+      next: () => {
         this.router.navigate([this.returnUrl]);
       },
       error: (err: HttpErrorResponse) => {
         this.errorMessage = err.message;}
-    })
-
+    });
   }
 
   onNoClick(): void {

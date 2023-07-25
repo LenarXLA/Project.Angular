@@ -39,3 +39,8 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
     margin: 0;
     width: 80%;
   }
+
+  #usrName {
+    font-size: 16px;
+    cursor: default;
+  }

@@ -1,9 +1,13 @@
-import {Injectable} from '@angular/core';
-import {Post} from '../Post';
-import {Observable, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Post } from '../Post';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { EnvironmentUrlService } from './environment-url.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class DataService {
   allPosts: Observable<Post[]> | undefined;
   categories = [
@@ -12,7 +16,7 @@ export class DataService {
     {value: 'IOS-Development', viewValue: 'IOS Development'}
   ];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private envUrl: EnvironmentUrlService) {
   }
 
   getData(): Observable<Post[]> {
@@ -39,4 +43,12 @@ export class DataService {
   deletePost(index: number) {
     return this.http.delete<Post>(`api/Home/DeleteArticle/${index}`);
   }
+
+  public getClaims = () => {
+    return this.http.get('api/Accounts/Privacy/Privacy');
+  }
+
+  // private createCompleteRoute = (route: string, envAddress: string) => {
+  //   return `${envAddress}/${route}`;
+  // }
 }

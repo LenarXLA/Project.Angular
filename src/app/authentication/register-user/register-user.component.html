@@ -62,7 +62,7 @@
       </mat-form-field>
 
       <div *ngIf="errorMessage">
-        {{ errorMessage }}
+        <span [innerHTML]="errorMessage" style="color: brown;"></span>
       </div>
 
       <div mat-dialog-actions class="adding-form-btns">

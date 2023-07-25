@@ -10,20 +10,28 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
   public isUserAuthenticated: boolean | undefined;
-  public currentUserName: string | undefined;
+  public currentUserName!: string | null;
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
-  
-  ngOnInit(): void {
+  constructor(private authService: AuthenticationService, private router: Router) { 
     this.authService.authChanged
     .subscribe(res => {
       this.isUserAuthenticated = res;
-      this.currentUserName = this.authService.currentUser;
+      this.getUserName();
     });
+  }
+
+  ngOnInit(): void {
+    if(this.authService.isUserAuthenticated()) {
+      this.authService.sendAuthStateChangeNotification(true);
+    }
   }
 
   public logout = () => {
     this.authService.logout();
     this.router.navigate(["/"]);
+  }
+
+  public getUserName = () => {
+    this.currentUserName = this.authService.currentUser;
   }
 }

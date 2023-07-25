@@ -40,8 +40,15 @@
       <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout fxLayoutGap="20px" class="navigation-items">
 
-          <li *ngIf="isUserAuthenticated">
-            <i style="font-size: 16px;">Вы вошли как {{ currentUserName }}</i>
+          <li *ngIf="isUserAuthenticated" id="usrName">
+            <i>Вы вошли как {{ currentUserName }}</i>
+          </li>
+
+          <li>
+            <a routerLink="/privacy" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              <mat-icon class="icon">gavel</mat-icon>
+              <span class="label">Privacy</span>
+            </a>
           </li>
 
           <li>
