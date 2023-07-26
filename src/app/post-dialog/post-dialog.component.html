@@ -10,21 +10,26 @@
   
   <div mat-dialog-content>
     <form class="example-form" (ngSubmit)="onSubmit()">
+
       <mat-form-field>
-        <input matInput placeholder="Post Title" type="text" required [(ngModel)]="blogPost.title" name="name">
+        <input matInput placeholder="Название статьи" type="text" required [(ngModel)]="blogPost.title" name="name">
       </mat-form-field>
+
+      <div class="NgxEditor__Wrapper">
+        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+        <ngx-editor [editor]="editor" [(ngModel)]="blogPost.content" name="content" [disabled]="false" [placeholder]="'Содержимое статьи...'"></ngx-editor>
+      </div>
+
       <mat-form-field>
-        <textarea matInput placeholder="Post content" required [(ngModel)]="blogPost.content" name="content"></textarea>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select matInput placeholder="Post Category" required [(ngModel)]="blogPost.category" name="category">
+        <mat-select matInput placeholder="Категория статьи" required [(ngModel)]="blogPost.category" name="category">
           <mat-option *ngFor="let cat of categories" [value]="cat.viewValue">
             {{ cat.viewValue }}
           </mat-option>
         </mat-select>
       </mat-form-field>
+
       <div *ngIf="errorMessage">
-        {{errorMessage}}
+        {{ errorMessage }}
       </div>
       
       <div mat-dialog-actions class="adding-form-btns">

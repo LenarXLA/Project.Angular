@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from '../service/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../Post';
 import { Observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-article-page',
@@ -34,5 +35,14 @@ export class MainArticlePageComponent {
 
   editPost() {
     this.router.navigateByUrl('/addPost', { state: { id: this.idArticle } });
+  }
+}
+
+@Pipe({name: 'safeHtml'})
+export class SafeHtmlPipe implements PipeTransform {
+  constructor(private sanitizer:DomSanitizer){}
+
+  transform(style: any) {
+    return this.sanitizer.bypassSecurityTrustHtml(style);
   }
 }

@@ -16,3 +16,8 @@
 .close{
     margin-left: 1%;
 }
+
+.NgxEditor__Wrapper {
+    text-align: left;
+    min-height: 10rem;
+  }

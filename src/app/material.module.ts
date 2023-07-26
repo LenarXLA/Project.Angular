@@ -9,7 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   imports: [
@@ -23,6 +23,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    NgxEditorModule,
   ],
   exports: [
     MatSidenavModule,
@@ -35,6 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
+    NgxEditorModule
   ]
 })
 

@@ -6,8 +6,13 @@
       <mat-card-subtitle>{{ (dataArticle | async)?.date | date:'d MMMM y, HH:mm' }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <p>{{ (dataArticle | async)?.content }}</p>
+      <div [innerHTML]="(dataArticle | async)?.content | safeHtml"></div>
     </mat-card-content>
+
+    <mat-card-footer>
+      <mat-card-subtitle><i>Автор {{ (dataArticle | async)?.author }}</i></mat-card-subtitle>
+    </mat-card-footer>
+    
     <mat-card-actions>
       <button class="edit-btn" mat-button color="primary" (click)="editPost()">Редактировать</button>
       <button class="delete-btn" mat-button color="primary" (click)="deletePost()">Удалить</button>

@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
-import { MainArticlePageComponent } from './main-article-page/main-article-page.component';
+import { MainArticlePageComponent, SafeHtmlPipe } from './main-article-page/main-article-page.component';
 import { MaterialModule } from './material.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -35,6 +35,7 @@ export function tokenGetter() {
     LoginComponent,
     PrivacyComponent,
     ForbiddenComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,

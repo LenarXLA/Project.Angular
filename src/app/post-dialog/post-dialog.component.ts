@@ -3,6 +3,7 @@ import { DataService } from '../service/data.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Post } from '../Post';
+import { Editor, Toolbar } from 'ngx-editor';
 
 @Component({
   selector: 'app-post-dialog',
@@ -14,6 +15,17 @@ export class PostDialogComponent {
   public dataArticle: Observable<Post> | undefined
   public idArticle: number | undefined
   errorMessage = '';
+  editor!: Editor;
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+    ['code', 'blockquote'],
+    ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['link', 'image'],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
 
   blogPost = {
     id: 0,
@@ -30,6 +42,8 @@ export class PostDialogComponent {
   ) {}
 
   ngOnInit() {
+    this.editor = new Editor();
+
     this.idArticle = history.state.id;
     if (this.idArticle) {
       this.dataService.getArticle(this.idArticle).subscribe(article => {
@@ -49,6 +63,8 @@ export class PostDialogComponent {
       return;
     }
 
+    this.blogPost.author = localStorage.getItem("userName")!;
+
     if (this.idArticle) {
       this.dataService.editPost(this.idArticle, this.blogPost).subscribe();
     } else {
@@ -59,4 +75,9 @@ export class PostDialogComponent {
   }
 
   categories = this.dataService.getCategories();
+
+    // make sure to destory the editor
+    ngOnDestroy(): void {
+      this.editor.destroy();
+    }
 }
